@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
       if(err) {
         next(err);
       } else {
-          console.log('new client');
+          //console.log('new client');
       }
   });
 });
