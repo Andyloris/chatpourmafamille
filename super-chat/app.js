@@ -1,11 +1,21 @@
 var app = require('express')(),
     server = require('http').createServer(app),
     io = require('socket.io').listen(server),
-    ent = require('ent') // Permet de bloquer les caractères HTML (sécurité équivalente à htmlentities en PHP)
-
+    ent = require('ent'), // Permet de bloquer les caractères HTML (sécurité équivalente à htmlentities en PHP)
+    path = require("path")
 // Chargement de la page index.html
 app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
+  var option = {
+      root: path.join(__dirname)
+  }
+  res.sendFile('index.html', option, function(err) {
+      if(err) {
+        throw err;
+        return;
+      } else {
+          console.log('new client');
+      }
+  });
 });
 
 io.sockets.on('connection', function (socket, pseudo) {
