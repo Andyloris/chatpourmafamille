@@ -5,16 +5,7 @@ var app = require('express')(),
     path = require("path")
 // Chargement de la page index.html
 app.get('/', function (req, res) {
-  var option = {
-      root: path.join(__dirname)
-  }
-  res.sendFile('index.html', option, function(err) {
-      if(err) {
-        next(err);
-      } else {
-          //console.log('new client');
-      }
-  });
+  res.sendfile(__dirname+'/index.html');
 });
 
 io.sockets.on('connection', function (socket, pseudo) {
