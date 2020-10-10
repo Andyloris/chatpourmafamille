@@ -11,7 +11,6 @@ app.get('/', function (req, res) {
   res.sendFile('index.html', option, function(err) {
       if(err) {
         throw err;
-        return;
       } else {
           console.log('new client');
       }
