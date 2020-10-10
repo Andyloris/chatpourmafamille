@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
   }
   res.sendFile('index.html', option, function(err) {
       if(err) {
-        throw err;
+        next(err);
       } else {
           console.log('new client');
       }
